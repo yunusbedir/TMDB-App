@@ -22,7 +22,8 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] =
+            "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 
     sourceSets {
@@ -33,13 +34,42 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                with(Deps.Koin) {
+                    implementation(core)
+                    implementation(composeMp)
+                }
+                with(Deps.Ktor) {
+                    implementation(clientJson)
+                    implementation(clientLogging)
+                    implementation(serialization)
+                    implementation(clientContentNegotiation)
+                    implementation(serializationKotlinxJson)
+                }
+                with(Deps.Kotlin) {
+                    implementation(serialization)
+                }
+                with(Deps.Material) {
+                    implementation(materialIconExtended)
+                }
+                with(Deps.Voyager) {
+                    implementation(navigator)
+                    implementation(transitions)
+                    implementation(bottomSheetNavigator)
+                    implementation(tabNavigator)
+                }
+
+                api(Deps.Github.imageLoader)
+                implementation(Deps.Compose.util)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("androidx.activity:activity-compose:1.6.1")
-                api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.9.0")
+                api(Deps.AndroidX.appcompat)
+                api(Deps.AndroidX.coreKtx)
+                implementation(Deps.Ktor.clientAndroid)
+                implementation(Deps.Koin.compose)
+                api(Deps.AndroidX.activityCompose)
             }
         }
         val iosX64Main by getting
@@ -50,6 +80,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(Deps.Ktor.clientIOS)
+            }
         }
     }
 }

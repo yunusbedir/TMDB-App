@@ -1,4 +1,4 @@
-package com.myapplication
+package com.yunusbedir.tmdbapp
 
 import MainView
 import android.os.Bundle

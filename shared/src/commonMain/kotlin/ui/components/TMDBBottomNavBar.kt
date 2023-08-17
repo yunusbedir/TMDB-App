@@ -1,4 +1,4 @@
-package ui.navigation
+package ui.components
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.RowScope
@@ -9,56 +9,44 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
+import cafe.adriel.voyager.navigator.tab.Tab
 
 @Composable
 fun TMDBBottomNavBar(
-    currentScreen: ScreenDestination,
-    topScreenDestinations: List<ScreenDestination>,
-    navigateTo: (ScreenDestination) -> Unit
+    tabList: List<Tab>
 ) {
     BottomNavigation(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        elevation = 4.dp
     ) {
-        topScreenDestinations.onEach { topScreenDestination ->
-            TMDBBottomNavigationItem(
-                selected = topScreenDestination.label == currentScreen.label,
-                onClick = {
-                    navigateTo.invoke(topScreenDestination)
-                },
-                imageVector = topScreenDestination.icon,
-                label = topScreenDestination.label
-            )
+        tabList.onEach { tab ->
+            TMDBBottomNavigationItem(tab)
         }
     }
 }
 
 @Composable
 fun RowScope.TMDBBottomNavigationItem(
-    selected: Boolean,
-    onClick: () -> Unit,
-    imageVector: ImageVector?,
-    label: String,
+    tab: Tab,
     modifier: Modifier = Modifier
 ) {
+    val tabNavigator = LocalTabNavigator.current
+    val title = tab.options.title
     val selectedContentColor = LocalContentColor.current
     BottomNavigationItem(
-        selected = selected,
-        onClick = onClick,
+        selected = tabNavigator.current.key == tab.key,
+        onClick = {tabNavigator.current = tab},
         icon = {
-            Icon(
-                imageVector = imageVector ?: Icons.Outlined.Refresh,
-                contentDescription = label
-            )
+            Icon(painter = tab.options.icon!!, contentDescription = tab.options.title)
         },
         label = {
             Text(
-                text = label
+                text = title
             )
         },
         alwaysShowLabel = false,

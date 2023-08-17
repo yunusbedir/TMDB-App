@@ -1,31 +1,31 @@
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import ui.navigation.ScreenDestination
-import ui.navigation.ScreenDestination.Companion.topScreenDestinations
-import ui.navigation.TMDBBottomNavBar
+import cafe.adriel.voyager.navigator.tab.CurrentTab
+import cafe.adriel.voyager.navigator.tab.TabNavigator
+import ui.components.TMDBBottomNavBar
+import ui.tabs.FavoriteTab
+import ui.tabs.HomeTab
+import ui.tabs.SearchTab
 
 @Composable
 fun App() {
-    var currentScreen: ScreenDestination by remember { mutableStateOf(ScreenDestination.Home()) }
-
     MaterialTheme {
-        Scaffold(
-            bottomBar = {
-                TMDBBottomNavBar(
-                    currentScreen = currentScreen,
-                    topScreenDestinations = topScreenDestinations
-                ) {
-                    currentScreen = it
+        TabNavigator(HomeTab) {
+            Scaffold(
+                scaffoldState = rememberScaffoldState(),
+                bottomBar = {
+                    TMDBBottomNavBar(
+                        tabList = listOf(
+                            HomeTab,
+                            SearchTab,
+                            FavoriteTab
+                        )
+                    )
                 }
-            }
-        ) {
-            currentScreen.content { screenDestination ->
-                currentScreen = screenDestination
+            ) {
+                CurrentTab()
             }
         }
     }

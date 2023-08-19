@@ -86,6 +86,14 @@ object Deps {
         const val util = "org.jetbrains.compose.ui:ui-util:${Versions.compose}"
     }
 
+    object Gradle {
+
+       const val android ="com.android.tools.build:gradle${Versions.gradlePlugin}"
+       const val compose ="org.jetbrains.compose:compose-gradle-plugin${Versions.compose}"
+       const val kotlin ="org.jetbrains.kotlin:kotlin-gradle-plugin${Versions.kotlin}"
+
+    }
+
 }
 /*
 [libraries]

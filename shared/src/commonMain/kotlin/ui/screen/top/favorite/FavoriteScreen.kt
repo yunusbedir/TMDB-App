@@ -19,17 +19,20 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import ui.screen.other.tvdetail.TvDetailScreen
 
 
-internal class FavoriteScreen : Screen {
+internal class FavoriteScreen(
+    private val viewModel: FavoriteScreenViewModel
+) : Screen {
 
     @Composable
     override fun Content() {
-        FavoriteScreenComponent()
+        FavoriteScreenComponent(viewModel = viewModel)
     }
 
 }
 
 @Composable
 fun FavoriteScreenComponent(
+    viewModel: FavoriteScreenViewModel,
     bottomSheetNavigator: BottomSheetNavigator = LocalBottomSheetNavigator.current,
     navigator: Navigator = LocalNavigator.currentOrThrow
 ) {

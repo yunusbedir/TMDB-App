@@ -17,13 +17,16 @@ import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ui.screen.other.tvdetail.TvDetailScreen
+import ui.screen.top.favorite.FavoriteScreenViewModel
 
 
-internal class SearchScreen : Screen {
+internal class SearchScreen(
+    private val viewModel: SearchScreenViewModel
+) : Screen {
 
     @Composable
     override fun Content() {
-        SearchScreenComponent()
+        SearchScreenComponent(viewModel = viewModel)
     }
 
 
@@ -31,6 +34,7 @@ internal class SearchScreen : Screen {
 
 @Composable
 fun SearchScreenComponent(
+    viewModel: SearchScreenViewModel,
     bottomSheetNavigator: BottomSheetNavigator = LocalBottomSheetNavigator.current,
     navigator: Navigator = LocalNavigator.currentOrThrow
 ) {

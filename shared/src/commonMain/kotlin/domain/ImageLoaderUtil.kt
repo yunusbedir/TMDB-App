@@ -1,6 +1,10 @@
 package domain
 
-/**
+import com.seiko.imageloader.ImageLoaderConfigBuilder
+import com.seiko.imageloader.util.LogPriority
+import com.seiko.imageloader.util.Logger
+
+
 fun ImageLoaderConfigBuilder.commonConfig() {
     logger = object : Logger {
         override fun log(
@@ -28,4 +32,3 @@ fun ImageLoaderConfigBuilder.commonConfig() {
     }
 
 }
-**/

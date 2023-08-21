@@ -59,7 +59,7 @@ kotlin {
                     implementation(tabNavigator)
                 }
 
-                implementation(Deps.Kamel.kamel)
+                api(Deps.Github.imageLoader)
                 implementation(Deps.Compose.util)
             }
         }

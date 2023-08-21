@@ -66,7 +66,7 @@ fun NumberMediaCard(
                 contentScale = ContentScale.FillBounds
             )
         }
-
+/*
         Text(
             text = index.toString(),
             modifier = Modifier.align(Alignment.BottomStart)
@@ -88,7 +88,7 @@ fun NumberMediaCard(
                 fontWeight = FontWeight(600),
                 color = Background,
             )
-        )
+        )*/
     }
 }
 

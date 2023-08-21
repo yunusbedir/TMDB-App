@@ -1,17 +1,17 @@
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import ui.components.TMDBBottomNavBar
-import ui.tabs.FavoriteTab
-import ui.tabs.HomeTab
-import ui.tabs.SearchTab
+import ui.presentation.tab.favorite.FavoriteTab
+import ui.presentation.tab.home.HomeTab
+import ui.presentation.tab.search.SearchTab
+import ui.theme.TMDBAppTheme
 
 @Composable
 fun App() {
-    MaterialTheme {
+    TMDBAppTheme {
         TabNavigator(HomeTab) {
             Scaffold(
                 scaffoldState = rememberScaffoldState(),

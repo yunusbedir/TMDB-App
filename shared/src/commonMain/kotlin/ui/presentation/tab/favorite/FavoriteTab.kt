@@ -1,4 +1,4 @@
-package ui.tabs
+package ui.presentation.tab.favorite
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,8 +15,6 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import ui.screen.top.favorite.FavoriteScreen
-import ui.screen.top.favorite.FavoriteScreenViewModel
 
 internal object FavoriteTab : Tab {
 

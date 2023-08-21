@@ -1,4 +1,4 @@
-package ui.screen.top.search
+package ui.presentation.tab.search
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,8 +16,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import ui.screen.other.tvdetail.TvDetailScreen
-import ui.screen.top.favorite.FavoriteScreenViewModel
+import ui.presentation.tvdetail.TvDetailScreen
 
 
 internal class SearchScreen(

@@ -94,6 +94,10 @@ object Deps {
 
     }
 
+    object Kamel {
+        const val kamel = "media.kamel:kamel-image:${Versions.kamel}"
+    }
+
 }
 /*
 [libraries]

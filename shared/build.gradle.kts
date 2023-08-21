@@ -59,7 +59,7 @@ kotlin {
                     implementation(tabNavigator)
                 }
 
-                api(Deps.Github.imageLoader)
+                implementation(Deps.Kamel.kamel)
                 implementation(Deps.Compose.util)
             }
         }
@@ -92,7 +92,7 @@ android {
     namespace = "com.yunusbedir.tmdbapp"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].res.srcDirs("src/androidMain/res","src/commonMain/resources")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {

@@ -3,7 +3,7 @@ package di
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
-import ui.screen.top.home.HomeScreenViewModel
+import ui.presentation.tab.home.HomeScreenViewModel
 
 
 fun initKoin(

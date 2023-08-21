@@ -1,4 +1,4 @@
-package ui.screen.other.tvdetail
+package ui.presentation.tvdetail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

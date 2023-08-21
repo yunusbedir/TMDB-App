@@ -1,4 +1,4 @@
-package ui.screen.top.favorite
+package ui.presentation.tab.favorite
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

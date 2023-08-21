@@ -1,6 +1,9 @@
-package ui.tabs
+package ui.presentation.tab.home
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
@@ -15,8 +18,6 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import ui.screen.top.home.HomeScreen
-import ui.screen.top.home.HomeScreenViewModel
 
 internal object HomeTab : Tab {
 
@@ -34,13 +35,18 @@ internal object HomeTab : Tab {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
-        BottomSheetNavigator(
-            modifier = Modifier.animateContentSize(),
-            sheetShape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
-            skipHalfExpanded = true
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .padding(bottom = 56.dp)
         ) {
-            Navigator(HomeScreen(viewModel = homeScreenViewModel)) { _ ->
-                CurrentScreen()
+            BottomSheetNavigator(
+                modifier = Modifier.animateContentSize(),
+                sheetShape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+                skipHalfExpanded = true
+            ) {
+                Navigator(HomeScreen(viewModel = homeScreenViewModel)) { _ ->
+                    CurrentScreen()
+                }
             }
         }
     }

@@ -10,6 +10,8 @@ object Versions {
     const val activityCompose = "1.7.2"
 
 
+    const val kamel = "0.7.1"
+
     const val koin = "3.4.2"
     const val koinComposeVersion = "3.4.2"
     const val ktor = "2.2.3"
@@ -23,6 +25,8 @@ object Versions {
     const val youtubePlayerAndroid = "12.1.0"
 
 
+
+
     const val composeCompiler = "1.4.2"
     const val coroutines = "1.7.0"
     const val serialization = "1.4.1"
@@ -32,4 +36,5 @@ object Versions {
     const val sqlDelight = "2.0.0-alpha05"
     const val logbackClassic = "1.2.11"
     const val kotlinWrappersBom = "1.0.0-pre.510"
+
 }

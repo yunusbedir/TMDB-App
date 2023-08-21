@@ -1,4 +1,4 @@
-package ui.screen.top.search
+package ui.presentation.tab.search
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

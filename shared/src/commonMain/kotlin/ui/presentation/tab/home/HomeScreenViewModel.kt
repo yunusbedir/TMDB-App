@@ -1,15 +1,20 @@
 package ui.presentation.tab.home
 
+import domain.UseCaseState
 import domain.model.result.MediaType
 import domain.model.result.TrendMediaModel
+import domain.usecase.GetTrendingAllOfDayUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ui.base.BaseScreenModel
 
-class HomeScreenViewModel : BaseScreenModel() {
+class HomeScreenViewModel(
+    private val getTrendingAllOfDayUseCase: GetTrendingAllOfDayUseCase
+) : BaseScreenModel() {
 
     init {
         println("MY_LOG , HomeScreenViewModel.init")
@@ -24,12 +29,32 @@ class HomeScreenViewModel : BaseScreenModel() {
     val uiState
         get() = _uiState.asStateFlow()
 
+    fun getTrending() {
+        viewModelScope.launch {
+            getTrendingAllOfDayUseCase.invoke().collectLatest { state ->
+                when (state) {
+                    is UseCaseState.Error -> {
+                        println("MY_TAG, " + state.message)
+                    }
+
+                    is UseCaseState.Success -> {
+                        _uiState.update {
+                            it.copy(
+                                trendsOfDay = state.result
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     fun getMovies() {
         viewModelScope.launch {
             delay(1000)
             _uiState.update {
                 it.copy(
-                    trendsOfDay = listOf(
+                    popularMovies = listOf(
                         TrendMediaModel(
                             id = "832502",
                             title = "The Monkey King",
@@ -54,11 +79,6 @@ class HomeScreenViewModel : BaseScreenModel() {
                             posterPath = "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
                             mediaType = MediaType.MOVIE,
                         )
-                    ),
-                    popularMovies = listOf(
-                        "popularMovies1",
-                        "popularMovies2",
-                        "popularMovies5"
                     ),
                     popularTvSeries = listOf(
                         "popularTvSeries1",
@@ -515,7 +535,7 @@ class HomeScreenViewModel : BaseScreenModel() {
  */
 data class HomeScreenState(
     var trendsOfDay: List<TrendMediaModel> = listOf(),
-    var popularMovies: List<String> = listOf(),
+    var popularMovies: List<TrendMediaModel> = listOf(),
     var popularTvSeries: List<String> = listOf(),
     var bestOfTenMovies: List<String> = listOf(),
     var bestOfTenTvSeries: List<String> = listOf()

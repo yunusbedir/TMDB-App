@@ -47,6 +47,7 @@ fun HomeScreenComponent(
 
     LaunchedEffect("homeScreenViewModel") {
         println("MY_LOG , homeScreenViewModel.getMovies()")
+        viewModel.getTrending()
         viewModel.getMovies()
     }
 
@@ -58,7 +59,7 @@ fun HomeScreenComponent(
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopStart) {
             MediaList(
                 trendsOfDay = uiState.value.trendsOfDay,
-                popularMovies = uiState.value.trendsOfDay,
+                popularMovies = uiState.value.popularMovies,
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -91,7 +92,7 @@ fun MediaList(
         }
         item {
             LazyRow {
-                itemsIndexed(trendsOfDay) { index, item ->
+                itemsIndexed(popularMovies) { index, item ->
                     NumberMediaCard(
                         index = index,
                         media = item,

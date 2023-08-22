@@ -8,5 +8,15 @@ open class BaseMediaModel(
 )
 
 enum class MediaType(val value: String) {
-    TV("tv"), MOVIE("movie")
+    TV("tv"), MOVIE("movie");
+
+    companion object {
+        fun getMediaType(value: String): MediaType {
+           return when(value) {
+                TV.value -> TV
+                MOVIE.value -> MOVIE
+                else -> MOVIE
+            }
+        }
+    }
 }

@@ -19,11 +19,12 @@ object Deps {
 
     object Ktor {
         const val clientCore = "io.ktor:ktor-client-core:${Versions.ktor}"
-        const val serializationKotlinxJson =
-            "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
-        const val serialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
         const val clientContentNegotiation =
             "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
+        const val serializationKotlinxJson =
+            "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
+
+        const val serialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
         const val clientLogging = "io.ktor:ktor-client-logging:${Versions.ktor}"
         const val clientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
 

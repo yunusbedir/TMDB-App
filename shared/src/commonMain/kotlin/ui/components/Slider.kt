@@ -40,7 +40,7 @@ fun AutoScrollingHorizontalSlider(
 
     Box(
         modifier =
-        Modifier.background(MaterialTheme.colors.background).fillMaxWidth().height(516.dp)
+        Modifier.background(MaterialTheme.colors.background).fillMaxWidth().height(350.dp)
     ) {
         HorizontalPager(
             state = pagerState,

@@ -18,11 +18,12 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import org.koin.compose.koinInject
 
 internal object HomeTab : Tab {
 
     private val homeScreenViewModel: HomeScreenViewModel
-        @Composable get() = rememberScreenModel { HomeScreenViewModel() }
+        @Composable get() = koinInject()
 
     override val options: TabOptions
         @Composable

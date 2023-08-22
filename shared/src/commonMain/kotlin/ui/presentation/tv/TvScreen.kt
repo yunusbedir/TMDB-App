@@ -37,8 +37,8 @@ fun TvScreen(
                 trendsOfDay = uiState.value.trendsOfDay,
                 popular = uiState.value.popular,
                 topRated = uiState.value.topRated,
-                nowPlaying = uiState.value.nowPlaying,
-                upComing = uiState.value.upComing,
+                onTheAir = uiState.value.onTheAir,
+                airingToday = uiState.value.airingToday,
                 modifier = Modifier.fillMaxWidth(),
                 clickMedia = { id ->
 

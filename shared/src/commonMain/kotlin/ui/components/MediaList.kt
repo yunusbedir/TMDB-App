@@ -30,8 +30,10 @@ fun MediaList(
     trendsOfDay: List<BaseMediaModel>,
     popular: List<BaseMediaModel>,
     topRated: List<BaseMediaModel>,
-    nowPlaying: List<BaseMediaModel>,
-    upComing: List<BaseMediaModel>,
+    nowPlaying: List<BaseMediaModel>? = null,
+    upComing: List<BaseMediaModel>? = null,
+    onTheAir: List<BaseMediaModel>? = null,
+    airingToday: List<BaseMediaModel>? = null,
     modifier: Modifier = Modifier,
     clickMedia: (String) -> Unit
 ) {
@@ -42,12 +44,13 @@ fun MediaList(
     ) {
         item {
             AnimatedVisibility(visible = trendsOfDay.isNotEmpty()) {
-                AutoScrollingHorizontalSlider(trendsOfDay.size) { page ->
+                AutoScrollingHorizontalSlider(trendsOfDay.size) { page, modifier ->
                     val media = trendsOfDay[page]
                     TopMediaCard(
                         media = media,
                         onPlayClick = { },
-                        onDetailsClick = { }
+                        onDetailsClick = { },
+                        modifier = modifier
                     )
                 }
             }
@@ -66,19 +69,41 @@ fun MediaList(
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
-        item {
-            TitleAndMediaLazyRow(
-                title = "Now Playing",
-                mediaList = nowPlaying,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
+        nowPlaying?.let {
+            item {
+                TitleAndMediaLazyRow(
+                    title = "Now Playing",
+                    mediaList = nowPlaying,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+            }
         }
-        item {
-            TitleAndMediaLazyRow(
-                title = "Up Coming",
-                mediaList = upComing,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
+        upComing?.let {
+            item {
+                TitleAndMediaLazyRow(
+                    title = "Up Coming",
+                    mediaList = upComing,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+            }
+        }
+        onTheAir?.let {
+            item {
+                TitleAndMediaLazyRow(
+                    title = "On The Air",
+                    mediaList = onTheAir,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+            }
+        }
+        airingToday?.let {
+            item {
+                TitleAndMediaLazyRow(
+                    title = "Airing Today",
+                    mediaList = airingToday,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+            }
         }
     }
 }

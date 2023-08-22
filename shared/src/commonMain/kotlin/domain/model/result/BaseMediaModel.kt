@@ -4,6 +4,7 @@ open class BaseMediaModel(
     open val id: String,
     open val title: String,
     open val posterPath: String,
+    open val backdropPath: String,
     open val mediaType: MediaType
 )
 

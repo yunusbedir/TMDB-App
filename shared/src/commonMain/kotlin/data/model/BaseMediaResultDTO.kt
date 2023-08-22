@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class TrendMediaResultDTO(
+data class BaseMediaResultDTO(
     @SerialName("adult")
     val adult: Boolean? = null,
     @SerialName("backdrop_path")

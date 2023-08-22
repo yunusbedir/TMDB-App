@@ -1,9 +1,13 @@
 package di
 
-import data.remote.TMDBService
-import data.repository.TMDBServiceRepositoryImpl
-import domain.repository.TMDBServiceRepository
-import domain.usecase.GetTrendingAllOfDayUseCase
+import data.remote.TMDBMovieService
+import data.remote.TMDBTvService
+import data.repository.TMDBMovieRepositoryImpl
+import data.repository.TMDBTvRepositoryImpl
+import domain.repository.TMDBMovieRepository
+import domain.repository.TMDBTvRepository
+import domain.usecase.GetMoviesUseCase
+import domain.usecase.GetTvSeriesUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.HttpCallValidator
@@ -46,17 +50,16 @@ fun commonModule() =
             getScreenModelModule()
 
 
-fun getScreenModelModule() = module {
-    factory { HomeScreenViewModel(get()) }
-}
 
 fun getDataModule(
     baseUrl: String,
     enableNetworkLogs: Boolean = true,
 ) = module {
-    single<TMDBServiceRepository> { TMDBServiceRepositoryImpl(get()) }
+    single<TMDBTvRepository> { TMDBTvRepositoryImpl(get()) }
+    single<TMDBMovieRepository> { TMDBMovieRepositoryImpl(get()) }
 
-    single { TMDBService(get(), baseUrl = baseUrl) }
+    single { TMDBTvService(get(), baseUrl = baseUrl) }
+    single { TMDBMovieService(get(), baseUrl = baseUrl) }
 
     single { createJson() }
 
@@ -64,7 +67,8 @@ fun getDataModule(
 }
 
 fun getUseCaseModule() = module {
-    single { GetTrendingAllOfDayUseCase(get()) }
+    single { GetMoviesUseCase(get()) }
+    single { GetTvSeriesUseCase(get()) }
 
 }
 

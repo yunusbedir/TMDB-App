@@ -173,26 +173,3 @@ fun TopMediaCard(
     }
 }
 
-@Composable
-private fun CapsuleButton(
-    modifier: Modifier = Modifier,
-    backgroundColor: Color,
-    contentColor: Color,
-    borderStroke: BorderStroke? = null,
-    content: @Composable RowScope.() -> Unit,
-    onClick: () -> Unit
-) {
-
-    OutlinedButton(
-        modifier = modifier,
-        shape = RoundedCornerShape(50.dp),
-        content = content,
-        onClick = onClick,
-        border = borderStroke,
-        contentPadding = PaddingValues(0.dp),
-        colors =
-        ButtonDefaults.buttonColors(
-            backgroundColor = backgroundColor, contentColor = contentColor
-        )
-    )
-}

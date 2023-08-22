@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import domain.model.result.BaseMediaModel
 import ui.theme.Background
+import ui.theme.TMDBAppTypography
 
 
 @Composable
@@ -66,29 +67,29 @@ fun NumberMediaCard(
                 contentScale = ContentScale.FillBounds
             )
         }
-/*
-        Text(
-            text = index.toString(),
-            modifier = Modifier.align(Alignment.BottomStart)
-                .offset(
-                    x = 2.dp,
-                    y = 2.dp
-                ).alpha(0.50f),
-            style = TextStyle(
-                fontSize = 96.sp,
-                fontWeight = FontWeight(1000),
-                color = Color(0xFF0296E5),
-            )
-        )
-        Text(
-            text = index.toString(),
-            modifier = Modifier.align(Alignment.BottomStart),
-            style = TextStyle(
-                fontSize = 96.sp,
-                fontWeight = FontWeight(600),
-                color = Background,
-            )
-        )*/
+
+                Text(
+                    text = index.toString(),
+                    modifier = Modifier.align(Alignment.BottomStart)
+                        .offset(
+                            x = 2.dp,
+                            y = 2.dp
+                        ).alpha(0.50f),
+                    style = TextStyle(
+                        fontSize = 96.sp,
+                        fontWeight = FontWeight(1000),
+                        color = Color(0xFF0296E5),
+                    )
+                )
+                Text(
+                    text = index.toString(),
+                    modifier = Modifier.align(Alignment.BottomStart),
+                    style = TextStyle(
+                        fontSize = 96.sp,
+                        fontWeight = FontWeight(600),
+                        color = Background,
+                    )
+                )
     }
 }
 
@@ -140,10 +141,6 @@ fun TopMediaCard(
                             )
                             Text(
                                 text = "Play",
-                                style =
-                                MaterialTheme.typography.h6.copy(
-                                    color = Color.LightGray
-                                ),
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier.align(Alignment.CenterVertically)
                             )
@@ -163,11 +160,8 @@ fun TopMediaCard(
                                     .fillMaxSize()
                                     .wrapContentSize(Alignment.Center),
                                 text = "Details",
-                                style =
-                                MaterialTheme.typography.h6.copy(
-                                    color = Color.LightGray
-                                ),
-                                textAlign = TextAlign.Center
+                                textAlign = TextAlign.Center,
+                                color = Color.LightGray
                             )
                         },
                     )

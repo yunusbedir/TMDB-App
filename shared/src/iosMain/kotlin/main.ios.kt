@@ -1,5 +1,9 @@
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.window.ComposeUIViewController
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
@@ -7,7 +11,10 @@ import com.seiko.imageloader.cache.memory.maxSizePercent
 import com.seiko.imageloader.component.setupDefaultComponents
 import domain.commonConfig
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.coroutines.runBlocking
 import okio.Path.Companion.toPath
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.resource
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
@@ -51,4 +58,16 @@ private fun getCacheDir(): String {
         )!!
         .path
         .orEmpty()
+}
+
+
+private val cache: MutableMap<String, Font> = mutableMapOf()
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+actual fun font(name: String, res: String, weight: FontWeight, style: FontStyle): Font {
+    return cache.getOrPut(res) {
+        val byteArray = runBlocking { resource("font/$res.ttf").readBytes() }
+        androidx.compose.ui.text.platform.Font(res, byteArray, weight, style)
+    }
 }

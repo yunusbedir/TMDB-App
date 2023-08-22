@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             CompositionLocalProvider(
                 LocalImageLoader provides remember { generateImageLoader(applicationContext) },
             ) {
-                Application()
+                MainView()
             }
         }
     }

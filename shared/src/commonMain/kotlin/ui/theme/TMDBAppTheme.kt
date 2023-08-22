@@ -26,6 +26,7 @@ val colorPallete =
 fun TMDBAppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colors = colorPallete,
+        typography = TMDBAppTypography,
         shapes = TMDBAppShape,
         content = {
             content()

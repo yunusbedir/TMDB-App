@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 kotlin {
@@ -40,11 +41,14 @@ kotlin {
                     implementation(composeMp)
                 }
                 with(Deps.Ktor) {
-                    implementation(clientJson)
-                    implementation(clientLogging)
-                    implementation(serialization)
+                    implementation(clientCore)
                     implementation(clientContentNegotiation)
                     implementation(serializationKotlinxJson)
+                    implementation(Deps.Kotlin.kotlinxSerializationJson)
+
+                    //implementation(clientJson)
+                    implementation(clientLogging)
+                    //implementation(serialization)
                 }
                 with(Deps.Kotlin) {
                     implementation(serialization)
@@ -81,7 +85,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                implementation(Deps.Ktor.clientIOS)
+                implementation(Deps.Ktor.clientDarwin)
             }
         }
     }
@@ -92,7 +96,7 @@ android {
     namespace = "com.yunusbedir.tmdbapp"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].res.srcDirs("src/androidMain/res","src/commonMain/resources")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {

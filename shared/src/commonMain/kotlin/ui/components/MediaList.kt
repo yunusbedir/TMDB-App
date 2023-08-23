@@ -143,10 +143,9 @@ fun TitleAndMediaLazyRow(
 
         LazyRow {
             itemsIndexed(mediaList) { index, item ->
-                NumberMediaCard(
-                    index = index,
-                    media = item,
-                    modifier = Modifier
+                HorizontalMediaCard(
+                    mediaModel = item,
+                    modifier = Modifier.padding(8.dp)
                 )
             }
         }

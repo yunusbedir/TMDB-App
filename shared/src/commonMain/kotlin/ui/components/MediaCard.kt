@@ -5,9 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,11 +16,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -30,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -40,7 +37,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import domain.model.result.BaseMediaModel
 import ui.theme.Background
-import ui.theme.TMDBAppTypography
 
 
 @Composable
@@ -68,28 +64,28 @@ fun NumberMediaCard(
             )
         }
 
-                Text(
-                    text = index.toString(),
-                    modifier = Modifier.align(Alignment.BottomStart)
-                        .offset(
-                            x = 2.dp,
-                            y = 2.dp
-                        ).alpha(0.50f),
-                    style = TextStyle(
-                        fontSize = 96.sp,
-                        fontWeight = FontWeight(1000),
-                        color = Color(0xFF0296E5),
-                    )
-                )
-                Text(
-                    text = index.toString(),
-                    modifier = Modifier.align(Alignment.BottomStart),
-                    style = TextStyle(
-                        fontSize = 96.sp,
-                        fontWeight = FontWeight(600),
-                        color = Background,
-                    )
-                )
+        Text(
+            text = index.toString(),
+            modifier = Modifier.align(Alignment.BottomStart)
+                .offset(
+                    x = 2.dp,
+                    y = 2.dp
+                ).alpha(0.50f),
+            style = TextStyle(
+                fontSize = 96.sp,
+                fontWeight = FontWeight(1000),
+                color = Color(0xFF0296E5),
+            )
+        )
+        Text(
+            text = index.toString(),
+            modifier = Modifier.align(Alignment.BottomStart),
+            style = TextStyle(
+                fontSize = 96.sp,
+                fontWeight = FontWeight(600),
+                color = Background,
+            )
+        )
     }
 }
 
@@ -101,7 +97,14 @@ fun TopMediaCard(
     onDetailsClick: () -> Unit
 ) {
 
-    Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
+    Column(
+        modifier = modifier.fillMaxSize()
+            .shadow(
+                elevation = 4.dp,
+                shape = MaterialTheme.shapes.large
+            ),
+        verticalArrangement = Arrangement.Top
+    ) {
         Box {
             AsyncImage(
                 url = media.posterPath,

@@ -20,7 +20,7 @@ import com.seiko.imageloader.rememberAsyncImagePainter
 fun AsyncImage(
     url: String,
     contentScale: ContentScale = ContentScale.Crop,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
 
     var showShimmer by remember { mutableStateOf(true) }

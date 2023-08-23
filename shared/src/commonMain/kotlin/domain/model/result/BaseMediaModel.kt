@@ -5,7 +5,8 @@ open class BaseMediaModel(
     open val title: String,
     open val posterPath: String,
     open val backdropPath: String,
-    open val mediaType: MediaType
+    open val mediaType: MediaType,
+    open val overview: String
 )
 
 enum class MediaType(val value: String) {
@@ -13,7 +14,7 @@ enum class MediaType(val value: String) {
 
     companion object {
         fun getMediaType(value: String): MediaType {
-           return when(value) {
+            return when (value) {
                 TV.value -> TV
                 MOVIE.value -> MOVIE
                 else -> MOVIE

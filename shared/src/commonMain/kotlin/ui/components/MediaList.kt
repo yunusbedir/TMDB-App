@@ -6,12 +6,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import domain.model.result.BaseMediaModel
+import domain.model.result.MediaResult
 
 
 @Composable
@@ -52,6 +55,11 @@ fun MediaList(
                         onDetailsClick = { },
                         modifier = modifier
                     )
+                }
+            }
+            AnimatedVisibility(visible = trendsOfDay.isEmpty()) {
+                AutoScrollingHorizontalSlider(1) { page, modifier ->
+                    Box(modifier = modifier)
                 }
             }
         }
@@ -142,10 +150,15 @@ fun TitleAndMediaLazyRow(
         }
 
         LazyRow {
+            item {
+                AnimatedVisibility(visible = mediaList.isEmpty()) {
+                    Box(modifier = Modifier.padding(8.dp).height(250.dp).width(350.dp))
+                }
+            }
             itemsIndexed(mediaList) { index, item ->
                 HorizontalMediaCard(
                     mediaModel = item,
-                    modifier = Modifier.padding(8.dp)
+                    modifier = Modifier.padding(8.dp).height(250.dp).width(350.dp)
                 )
             }
         }

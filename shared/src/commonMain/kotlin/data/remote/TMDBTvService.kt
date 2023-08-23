@@ -1,7 +1,7 @@
 package data.remote
 
 import data.model.BaseTMDBServiceResponse
-import data.model.BaseMediaResultDTO
+import data.model.TvMediaResultDTO
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -12,30 +12,30 @@ class TMDBTvService(private val httpClient: HttpClient, private val baseUrl: Str
     suspend fun getTrendingOfDay(
         language: String = "en-US",
         page: Int = 1
-    ): BaseTMDBServiceResponse<BaseMediaResultDTO> =
+    ): BaseTMDBServiceResponse<TvMediaResultDTO> =
         httpClient.get("$baseUrl/trending/tv/day?language=$language&api_key=$apiKey").body()
 
     suspend fun getPopular(
         language: String = "en-US",
         page: Int = 1
-    ): BaseTMDBServiceResponse<BaseMediaResultDTO> =
+    ): BaseTMDBServiceResponse<TvMediaResultDTO> =
         httpClient.get("$baseUrl/tv/popular?language=$language&page=$page&api_key=$apiKey").body()
 
     suspend fun getTopRated(
         language: String = "en-US",
         page: Int = 1
-    ): BaseTMDBServiceResponse<BaseMediaResultDTO> =
+    ): BaseTMDBServiceResponse<TvMediaResultDTO> =
         httpClient.get("$baseUrl/tv/top_rated?language=$language&page=$page&api_key=$apiKey").body()
 
     suspend fun getOnTheAir(
         language: String = "en-US",
         page: Int = 1
-    ): BaseTMDBServiceResponse<BaseMediaResultDTO> =
+    ): BaseTMDBServiceResponse<TvMediaResultDTO> =
         httpClient.get("$baseUrl/tv/on_the_air?language=$language&page=$page&api_key=$apiKey").body()
 
     suspend fun getAiringToday(
         language: String = "en-US",
         page: Int = 1
-    ): BaseTMDBServiceResponse<BaseMediaResultDTO> =
+    ): BaseTMDBServiceResponse<TvMediaResultDTO> =
         httpClient.get("$baseUrl/tv/airing_today?language=$language&page=$page&api_key=$apiKey").body()
 }

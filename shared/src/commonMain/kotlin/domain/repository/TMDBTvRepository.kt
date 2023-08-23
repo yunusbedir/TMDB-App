@@ -1,13 +1,13 @@
 package domain.repository
 
 import data.model.BaseTMDBServiceResponse
-import data.model.BaseMediaResultDTO
+import data.model.TvMediaResultDTO
 
 interface TMDBTvRepository {
 
-    suspend fun getTrendingOfDay(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getPopular(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getTopRated(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getOnTheAir(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getAiringToday(): BaseTMDBServiceResponse<BaseMediaResultDTO>
+    suspend fun getTrendingOfDay(): BaseTMDBServiceResponse<TvMediaResultDTO>
+    suspend fun getPopular(): BaseTMDBServiceResponse<TvMediaResultDTO>
+    suspend fun getTopRated(): BaseTMDBServiceResponse<TvMediaResultDTO>
+    suspend fun getOnTheAir(): BaseTMDBServiceResponse<TvMediaResultDTO>
+    suspend fun getAiringToday(): BaseTMDBServiceResponse<TvMediaResultDTO>
 }

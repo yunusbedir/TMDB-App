@@ -1,13 +1,13 @@
 package domain.repository
 
 import data.model.BaseTMDBServiceResponse
-import data.model.BaseMediaResultDTO
+import data.model.MovieMediaResultDTO
 
 interface TMDBMovieRepository {
 
-    suspend fun getTrendingOfDay(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getPopular(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getTopRated(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getNowPlaying(): BaseTMDBServiceResponse<BaseMediaResultDTO>
-    suspend fun getUpComing(): BaseTMDBServiceResponse<BaseMediaResultDTO>
+    suspend fun getTrendingOfDay(): BaseTMDBServiceResponse<MovieMediaResultDTO>
+    suspend fun getPopular(): BaseTMDBServiceResponse<MovieMediaResultDTO>
+    suspend fun getTopRated(): BaseTMDBServiceResponse<MovieMediaResultDTO>
+    suspend fun getNowPlaying(): BaseTMDBServiceResponse<MovieMediaResultDTO>
+    suspend fun getUpComing(): BaseTMDBServiceResponse<MovieMediaResultDTO>
 }

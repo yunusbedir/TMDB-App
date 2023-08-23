@@ -1,7 +1,7 @@
 package domain.usecase
 
-import data.model.BaseMediaResultDTO
 import data.model.BaseTMDBServiceResponse
+import data.model.MovieMediaResultDTO
 import domain.UseCaseState
 import domain.model.result.BaseMediaModel
 import domain.model.result.MediaResult
@@ -37,14 +37,15 @@ class GetMoviesUseCase(
     }
 
     companion object {
-        private fun BaseTMDBServiceResponse<BaseMediaResultDTO>.convertToResult(): List<MediaResult> {
+        private fun BaseTMDBServiceResponse<MovieMediaResultDTO>.convertToResult(): List<MediaResult> {
             return results?.map {
                 MediaResult(
                     id = it.id.toString(),
                     title = it.title.toString(),
                     posterPath = "https://image.tmdb.org/t/p/original/" + it.poster_path.toString(),
                     backdropPath = "https://image.tmdb.org/t/p/original/" + it.backdrop_path.toString(),
-                    mediaType = MediaType.getMediaType(it.media_type.toString())
+                    mediaType = MediaType.getMediaType(it.media_type.toString()),
+                    overview = it.overview.toString()
                 )
             }.orEmpty()
         }

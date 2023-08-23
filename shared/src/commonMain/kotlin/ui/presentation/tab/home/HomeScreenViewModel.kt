@@ -82,6 +82,7 @@ val tempList = listOf(
         posterPath = "https://image.tmdb.org/t/p/original/2D6ksPSChcRcZuvavrae9g4b8oh.jpg",
         backdropPath = "https://image.tmdb.org/t/p/original/2D6ksPSChcRcZuvavrae9g4b8oh.jpg",
         mediaType = MediaType.MOVIE,
+        overview = "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
     ),
     MediaResult(
         id = "976573",
@@ -89,6 +90,7 @@ val tempList = listOf(
         posterPath = "https://image.tmdb.org/t/p/original/6oH378KUfCEitzJkm07r97L0RsZ.jpg",
         backdropPath = "https://image.tmdb.org/t/p/original/6oH378KUfCEitzJkm07r97L0RsZ.jpg",
         mediaType = MediaType.MOVIE,
+        overview = "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
     ),
     MediaResult(
         id = "565770",
@@ -96,6 +98,7 @@ val tempList = listOf(
         posterPath = "https://image.tmdb.org/t/p/original/lZ2sOCMCcGaPppaXj0Wiv0S7A08.jpg",
         backdropPath = "https://image.tmdb.org/t/p/original/lZ2sOCMCcGaPppaXj0Wiv0S7A08.jpg",
         mediaType = MediaType.MOVIE,
+        overview = "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
     ),
     MediaResult(
         id = "569094",
@@ -103,6 +106,7 @@ val tempList = listOf(
         posterPath = "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
         backdropPath = "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
         mediaType = MediaType.MOVIE,
+        overview = "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common."
     )
 )
 

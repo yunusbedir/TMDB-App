@@ -15,6 +15,7 @@ import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ui.components.MediaList
+import ui.presentation.moviedetail.MovieDetailScreen
 import ui.presentation.tab.home.HomeScreenViewModel
 
 @Composable
@@ -40,8 +41,8 @@ fun MovieScreen(
                 nowPlaying = uiState.value.nowPlaying,
                 upComing = uiState.value.upComing,
                 modifier = Modifier.fillMaxWidth(),
-                clickMedia = { id ->
-
+                clickMedia = { media ->
+                    navigator.push(MovieDetailScreen(navigator,media))
                 }
             )
         }

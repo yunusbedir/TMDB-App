@@ -16,13 +16,14 @@ import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ui.components.MediaList
 import ui.presentation.tab.home.HomeScreenViewModel
+import ui.presentation.tvdetail.TvDetailScreen
 
 @Composable
 fun TvScreen(
     viewModel: HomeScreenViewModel,
     bottomSheetNavigator: BottomSheetNavigator = LocalBottomSheetNavigator.current,
     navigator: Navigator = LocalNavigator.currentOrThrow
-){
+) {
     LaunchedEffect("MovieScreen") {
         viewModel.getTv()
     }
@@ -40,8 +41,8 @@ fun TvScreen(
                 onTheAir = uiState.value.onTheAir,
                 airingToday = uiState.value.airingToday,
                 modifier = Modifier.fillMaxWidth(),
-                clickMedia = { id ->
-
+                clickMedia = { media ->
+                    navigator.push(TvDetailScreen(navigator, media))
                 }
             )
         }

@@ -1,5 +1,6 @@
 package ui.theme
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
@@ -38,52 +39,68 @@ val TMDBAppTypography: Typography
     @Composable
     get() = Typography(
         h1 = TextStyle(
-            fontFamily = montserratBold,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Bold,
             fontSize = 52.sp,
         ),
-        h2 = TextStyle(fontFamily = montserratBold, fontWeight = FontWeight.Bold, fontSize = 24.sp),
+        h2 = TextStyle(
+            color = MaterialTheme.colors.onPrimary,
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp
+        ),
         h3 = TextStyle(
-            fontFamily = montserratBold,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,
         ),
         h4 = TextStyle(
-            fontFamily = montserratBold,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp,
         ),
-        h5 = TextStyle(fontFamily = montserratBold, fontWeight = FontWeight.Bold, fontSize = 14.sp),
+        h5 = TextStyle(
+            color = MaterialTheme.colors.onPrimary,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp
+        ),
         h6 = TextStyle(
-            fontFamily = montserratSemiBold,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.SemiBold,
             fontSize = 12.sp,
         ),
         subtitle1 = TextStyle(
-            fontFamily = montserratSemiBold,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
         ),
         subtitle2 = TextStyle(
-            fontFamily = montserratRegular,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Normal,
             fontSize = 14.sp,
         ),
         body1 = TextStyle(
-            fontFamily = montserratRegular, fontWeight = FontWeight.Normal, fontSize = 14.sp
-        ),
-        body2 = TextStyle(fontFamily = montserratRegular, fontSize = 10.sp),
-        button = TextStyle(
-            fontFamily = montserratRegular,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Normal,
-            fontSize = 15.sp,
-            color = OnPrimary
+            fontSize = 14.sp
+        ),
+        body2 = TextStyle(
+            color = MaterialTheme.colors.onPrimary,
+            fontSize = 10.sp
+        ),
+        button = TextStyle(
+            color = MaterialTheme.colors.onPrimary,
+            fontWeight = FontWeight.Normal,
+            fontSize = 15.sp
         ),
         caption = TextStyle(
-            fontFamily = montserratRegular, fontWeight = FontWeight.Normal, fontSize = 8.sp
+            color = MaterialTheme.colors.onPrimary,
+            fontWeight = FontWeight.Normal,
+            fontSize = 8.sp
         ),
         overline = TextStyle(
-            fontFamily = montserratRegular, fontWeight = FontWeight.Normal, fontSize = 12.sp
+            color = MaterialTheme.colors.onPrimary,
+            fontWeight = FontWeight.Normal,
+            fontSize = 12.sp
         )
     )
 

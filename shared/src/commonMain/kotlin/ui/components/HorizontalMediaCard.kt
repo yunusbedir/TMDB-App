@@ -1,5 +1,6 @@
 package ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,14 +18,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import domain.model.result.BaseMediaModel
+import domain.model.result.MediaResult
 
 @Composable
 fun HorizontalMediaCard(
     mediaModel: BaseMediaModel,
+    clickMedia: (BaseMediaModel) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .clickable {
+                clickMedia.invoke(mediaModel)
+            },
         shape = MaterialTheme.shapes.large,
         elevation = 4.dp
     ) {

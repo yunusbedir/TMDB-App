@@ -38,7 +38,7 @@ fun MediaList(
     onTheAir: List<BaseMediaModel>? = null,
     airingToday: List<BaseMediaModel>? = null,
     modifier: Modifier = Modifier,
-    clickMedia: (String) -> Unit
+    clickMedia: (BaseMediaModel) -> Unit
 ) {
     LazyColumn(
         modifier = modifier,
@@ -52,7 +52,9 @@ fun MediaList(
                     TopMediaCard(
                         media = media,
                         onPlayClick = { },
-                        onDetailsClick = { },
+                        onDetailsClick = {
+                            clickMedia.invoke(media)
+                        },
                         modifier = modifier
                     )
                 }
@@ -67,6 +69,7 @@ fun MediaList(
             TitleAndMediaLazyRow(
                 title = "Popular",
                 mediaList = popular,
+                clickMedia = clickMedia,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
@@ -74,6 +77,7 @@ fun MediaList(
             TitleAndMediaLazyRow(
                 title = "Top Rated",
                 mediaList = topRated,
+                clickMedia = clickMedia,
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
@@ -82,6 +86,7 @@ fun MediaList(
                 TitleAndMediaLazyRow(
                     title = "Now Playing",
                     mediaList = nowPlaying,
+                    clickMedia = clickMedia,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -91,6 +96,7 @@ fun MediaList(
                 TitleAndMediaLazyRow(
                     title = "Up Coming",
                     mediaList = upComing,
+                    clickMedia = clickMedia,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -100,6 +106,7 @@ fun MediaList(
                 TitleAndMediaLazyRow(
                     title = "On The Air",
                     mediaList = onTheAir,
+                    clickMedia = clickMedia,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -109,6 +116,7 @@ fun MediaList(
                 TitleAndMediaLazyRow(
                     title = "Airing Today",
                     mediaList = airingToday,
+                    clickMedia = clickMedia,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
@@ -120,6 +128,7 @@ fun MediaList(
 fun TitleAndMediaLazyRow(
     title: String,
     mediaList: List<BaseMediaModel>,
+    clickMedia: (BaseMediaModel) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
@@ -158,7 +167,8 @@ fun TitleAndMediaLazyRow(
             itemsIndexed(mediaList) { index, item ->
                 HorizontalMediaCard(
                     mediaModel = item,
-                    modifier = Modifier.padding(8.dp).height(250.dp).width(350.dp)
+                    modifier = Modifier.padding(8.dp).height(250.dp).width(350.dp),
+                    clickMedia = clickMedia
                 )
             }
         }

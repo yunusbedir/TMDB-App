@@ -43,7 +43,7 @@ fun SearchScreenComponent(
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(listOf(1, 2, 3, 4, 5)) {
                     Button(onClick = {
-                        navigator.push(TvDetailScreen(tvId = "SearchScreen, $it"))
+                        //navigator.push(TvDetailScreen(tvId = "SearchScreen, $it"))
                     }) {
                         Text("SearchScreen, $it")
                     }
